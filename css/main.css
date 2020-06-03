@@ -11,7 +11,7 @@
     --lightGrayishCyan: hsl(180, 31%, 95%);
     --darkGrayishCyan: hsl(180, 8%, 52%);
     --veryDarkGrayishCyan: hsl(180, 14%, 20%);
-    font-size: 8px;
+    font-size: 20px;
 }
 
 * {
