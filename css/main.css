@@ -1,0 +1,21 @@
+:root {
+    /* Primary */
+
+    --desaturatedDarkCyan: hsl(180, 29%, 50%);
+
+    /* Neutral */
+
+    /* Background */
+    --lightGrayishCyan: hsl(180, 52%, 96%);
+    /* Filter Tablets */
+    --lightGrayishCyan: hsl(180, 31%, 95%);
+    --darkGrayishCyan: hsl(180, 8%, 52%);
+    --veryDarkGrayishCyan: hsl(180, 14%, 20%);
+    font-size: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
