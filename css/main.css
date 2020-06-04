@@ -8,7 +8,6 @@
     /* Background */
     --lightGrayishCyan: hsl(180, 52%, 96%);
     /* Filter Tablets */
-    --lightGrayishCyan: hsl(180, 31%, 95%);
     --darkGrayishCyan: hsl(180, 8%, 52%);
     --veryDarkGrayishCyan: hsl(180, 14%, 20%);
 
@@ -41,15 +40,42 @@ main {
     padding: 230px 11.4% 0px;
 }
 
+.main__job-container,
+.job-container__wrapper,
+.job-container__info,
+.info__company,
+.info__details,
+.job-container__tags,
+.attribution {
+    display: flex;
+}
+
+.main__job-container,
+.tags__item,
+.position {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.tags__item,
+.position {
+    cursor: pointer;
+}
+
+.main__job-container {
+    user-select: none;
+}
+
 /* Job item */
 .main__job-container {
-    display: flex;
     justify-content: space-between;
     align-content: center;
-    padding: 35px 40px 28px 34px;
+    padding: 35px 40px 28px 40px;
     background-color: #FFF;
     margin-bottom: 20px;
-    border-left: 6px solid var(--desaturatedDarkCyan);
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -58,8 +84,8 @@ main {
     box-shadow: 0px 5px 10px 2px rgba(91, 164, 164, 0.2);
 }
 
-.job-container__wrapper {
-    display: flex;
+.main__job-container:hover {
+    border-left: 6px solid var(--desaturatedDarkCyan);
 }
 
 .job-container__image {
@@ -67,7 +93,6 @@ main {
 }
 
 .job-container__info {
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 9px;
@@ -75,7 +100,6 @@ main {
 
 .info__company,
 .info__details {
-    display: flex;
     align-items: center;
 }
 
@@ -109,9 +133,13 @@ main {
     background-color: var(--veryDarkGrayishCyan);
 }
 
-.job-container__info .position {
+.position {
     font-weight: 700;
     font-size: 1.2rem;
+}
+
+.position:hover {
+    color: var(--desaturatedDarkCyan);
 }
 
 .info__details {
@@ -123,7 +151,6 @@ main {
 }
 
 .job-container__tags {
-    display: flex;
     align-items: center;
 }
 
@@ -142,9 +169,13 @@ main {
     -o-border-radius: 3px;
 }
 
+.tags__item:hover {
+    background-color: var(--desaturatedDarkCyan);
+    color: #FFF;
+}
+
 /* Footer */
 .attribution {
-    display: flex;
     font-size: 1rem;
     justify-content: center;
     align-items: center;
