@@ -1,7 +1,7 @@
 let jobs;
 var mainContainer = document.querySelector('main');
 
-fetch("../data.json")
+fetch("data.json")
     .then((res) => res.json())
     .then((data) => initialize(data))
     .catch((err) => console.log('Error: ' + err));
