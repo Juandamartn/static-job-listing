@@ -16,7 +16,13 @@
 <body>
   <header></header>
 
-  <main></main>
+  <main>
+    <div class="main__filter-container hidden animateDisplay">
+      <div class="filter-container__params"></div>
+
+      <span onclick="closeFilter()">Clear</span>
+    </div>
+  </main>
 
   <footer>
     <div class="attribution">
@@ -25,6 +31,8 @@
     </div>
   </footer>
 
+  <script src="js/createElements.js"></script>
+  <script src="js/filter.js"></script>
   <script src="js/script.js"></script>
 </body>
 

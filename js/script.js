@@ -55,76 +55,12 @@ function createItem(job) {
 
     //Tags container
     var tagsContainer = createDivTag('', 'job-container__tags', jobContainer);
-    createSpanTag('tags__item', job.role, tagsContainer);
-    createSpanTag('tags__item', job.level, tagsContainer);
+    createSpanTag('tags__item', job.role, tagsContainer, 1, job.role);
+    createSpanTag('tags__item', job.level, tagsContainer, 1, job.level);
     for (let i = 0; i < job.languages.length; i++) {
-        createSpanTag('tags__item', job.languages[i], tagsContainer);
+        createSpanTag('tags__item', job.languages[i], tagsContainer, 1, job.languages[i]);
     }
     for (let i = 0; i < job.tools.length; i++) {
-        createSpanTag('tags__item', job.tools[i], tagsContainer);
+        createSpanTag('tags__item', job.tools[i], tagsContainer, 1, job.tools[i]);
     }
-}
-
-/**
- * Creates a <div> element
- * @param {*} id Id attribute of the element
- * @param {*} className Class attribute of the element
- * @param {*} parent Parent element to append
- * @returns The element created
- */
-function createDivTag(id, className, parent) {
-    var container = document.createElement('div');
-    container.setAttribute('id', id);
-    container.classList = className;
-    parent.appendChild(container);
-
-    return container;
-}
-
-/**
- * Creates a <p> element
- * @param {*} content Text inside the element
- * @param {*} class Class attribute of the element
- * @param {*} parent Parent element to append
- * @returns The element created
- */
-function createPTag(content, className, parent) {
-    var element = document.createElement('p');
-    element.classList = className;
-    element.innerHTML = content;
-    parent.appendChild(element);
-
-    return element;
-}
-
-/**
- * Creates a <span> element
- * @param {*} className Class attribute of the element
- * @param {*} content Text inside the element
- * @param {*} parent Parent element to append
- * @returns The element created
- */
-function createSpanTag(className, content, parent) {
-    var element = document.createElement('span');
-    element.classList = className;
-    element.innerHTML = content;
-    parent.appendChild(element);
-
-    return element;
-}
-
-/**
- * Creates a <img> element
- * @param {*} src The src value of the element
- * @param {*} alt The alt value of the element
- * @param {*} parent The parent element to append
- * @returns The element created
- */
-function createImgTag(src, alt, parent) {
-    var element = document.createElement('img');
-    element.setAttribute('src', src);
-    element.setAttribute('alt', alt);
-    parent.appendChild(element);
-
-    return element;
 }

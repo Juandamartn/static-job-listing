@@ -40,19 +40,40 @@ main {
     padding: 230px 11.4% 0px;
 }
 
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.animateDisplay {
+    animation-name: animateDisplay;
+    animation-duration: 0.5s;
+}
+
+.animateClose {
+    animation-name: animateClose;
+    animation-duration: 0.5s;
+}
+
 .main__job-container,
 .job-container__wrapper,
 .job-container__info,
 .info__company,
 .info__details,
 .job-container__tags,
-.attribution {
+.attribution,
+.filter-container__params {
     display: flex;
 }
 
 .main__job-container,
 .tags__item,
-.position {
+.position,
+.main__filter-container span,
+.params__item::after {
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -61,12 +82,88 @@ main {
 }
 
 .tags__item,
-.position {
+.position,
+.main__filter-container span {
     cursor: pointer;
 }
 
 .main__job-container {
     user-select: none;
+}
+
+/* Filter container */
+.main__filter-container {
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 77%;
+    height: auto;
+    background-color: #FFF;
+    padding: 19px 40px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transform: translate(0px, -80px);
+    -webkit-transform: translate(0px, -110px);
+    -moz-transform: translate(0px, -80px);
+    -ms-transform: translate(0px, -80px);
+    -o-transform: translate(0px, -80px);
+    box-shadow: 0px 5px 10px 2px rgba(91, 164, 164, 0.2);
+}
+
+.filter-container__params {
+    flex-wrap: wrap;
+}
+
+.params__item {
+    background-color: var(--lightGrayishCyan);
+    color: var(--desaturatedDarkCyan);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 9px 7px 9px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.params__item::after {
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    margin-left: 10px;
+    content: "";
+    background-color: var(--desaturatedDarkCyan);
+    background-image: url(../images/icon-remove.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -ms-border-radius: 0 3px 3px 0;
+    -o-border-radius: 0 3px 3px 0;
+    transform: translate(0px, -9px);
+    -webkit-transform: translate(0px, -9px);
+    -moz-transform: translate(0px, -9px);
+    -ms-transform: translate(0px, -9px);
+    -o-transform: translate(0px, -9px);
+}
+
+.params__item:hover::after {
+    background-color: var(--veryDarkGrayishCyan);
+}
+
+.main__filter-container span {
+    color: var(--desaturatedDarkCyan);
+}
+
+.main__filter-container span:hover {
+    border-bottom: 1px solid var(--desaturatedDarkCyan);
 }
 
 /* Job item */
@@ -183,4 +280,41 @@ main {
 
 .attribution a {
     color: var(--desaturatedDarkCyan);
+}
+
+/* Animations */
+@keyframes animateDisplay {
+    0% {
+        transform: scale(0) translate(0px, 0px);
+        -webkit-transform: scale(0) translate(0px, 0px);
+        -moz-transform: scale(0) translate(0px, 0px);
+        -ms-transform: scale(0) translate(0px, 0px);
+        -o-transform: scale(0) translate(0px, 0px);
+    }
+
+    100% {
+        transform: scale(1) translate(0px, -110px);
+        -webkit-transform: scale(1) translate(0px, -110px);
+        -moz-transform: scale(1) translate(0px, -110px);
+        -ms-transform: scale(1) translate(0px, -110px);
+        -o-transform: scale(1) translate(0px, -110px);
+    }
+}
+
+@keyframes animateClose {
+    0% {
+        transform: scale(1) translate(0px, -110px);
+        -webkit-transform: scale(1) translate(0px, -110px);
+        -moz-transform: scale(1) translate(0px, -110px);
+        -ms-transform: scale(1) translate(0px, -110px);
+        -o-transform: scale(1) translate(0px, -110px);
+    }
+
+    100% {
+        transform: scale(0) translate(0px, 0px);
+        -webkit-transform: scale(0) translate(0px, 0px);
+        -moz-transform: scale(0) translate(0px, 0px);
+        -ms-transform: scale(0) translate(0px, 0px);
+        -o-transform: scale(0) translate(0px, 0px);
+    }
 }
