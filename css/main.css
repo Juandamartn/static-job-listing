@@ -11,7 +11,8 @@
     --lightGrayishCyan: hsl(180, 31%, 95%);
     --darkGrayishCyan: hsl(180, 8%, 52%);
     --veryDarkGrayishCyan: hsl(180, 14%, 20%);
-    font-size: 20px;
+
+    font-size: 15px;
 }
 
 * {
@@ -19,4 +20,136 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Spartan, sans-serif;
+    font-weight: 500;
+}
+
+body {
+    background-color: var(--lightGrayishCyan);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 155px;
+    background-image: url(../images/bg-header-desktop.svg);
+    background-color: var(--desaturatedDarkCyan);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main {
+    padding: 230px 11.4% 0px;
+}
+
+/* Job item */
+.main__job-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 35px 40px 28px 34px;
+    background-color: #FFF;
+    margin-bottom: 20px;
+    border-left: 6px solid var(--desaturatedDarkCyan);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    box-shadow: 0px 5px 10px 2px rgba(91, 164, 164, 0.2);
+}
+
+.job-container__wrapper {
+    display: flex;
+}
+
+.job-container__image {
+    margin-right: 25px;
+}
+
+.job-container__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 9px;
+}
+
+.info__company,
+.info__details {
+    display: flex;
+    align-items: center;
+}
+
+.info__company p,
+.info__company span {
+    margin-right: 12px;
+}
+
+.info__company p {
+    color: var(--desaturatedDarkCyan);
+    font-weight: 700;
+}
+
+.info__company span {
+    text-transform: uppercase;
+    color: #FFF;
+    font-size: 0.7rem;
+    padding: 8px 9px 4px 9px;
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    -ms-border-radius: 500px;
+    -o-border-radius: 500px;
+}
+
+.company__new {
+    background-color: var(--desaturatedDarkCyan);
+}
+
+.company__featured {
+    background-color: var(--veryDarkGrayishCyan);
+}
+
+.job-container__info .position {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.info__details {
+    color: var(--darkGrayishCyan);
+}
+
+.info__details p {
+    margin-right: 14px;
+}
+
+.job-container__tags {
+    display: flex;
+    align-items: center;
+}
+
+.tags__item {
+    height: fit-content;
+    background-color: var(--lightGrayishCyan);
+    color: var(--desaturatedDarkCyan);
+    font-weight: 700;
+    padding: 8px 8px 6px 8px;
+    margin-left: 15px;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+/* Footer */
+.attribution {
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.attribution a {
+    color: var(--desaturatedDarkCyan);
 }

@@ -25,15 +25,18 @@ function initialize(data) {
 function createItem(job) {
     var jobContainer = createDivTag(job.id, 'main__job-container', mainContainer);
 
+    // Image and Info wrapper
+    var wrapper = createDivTag('', 'job-container__wrapper', jobContainer);
+
     // Image container
-    var imgContainer = createDivTag('', 'job-container__image', jobContainer);
+    var imgContainer = createDivTag('', 'job-container__image', wrapper);
     createImgTag(job.logo, `${job.company} logo`, imgContainer);
 
     // Info container
-    var infoContainer = createDivTag('', 'job-container__info', jobContainer);
+    var infoContainer = createDivTag('', 'job-container__info', wrapper);
 
     var companyContainer = createDivTag('', 'info__company', infoContainer);
-    createPTag(job.company, companyContainer);
+    createPTag(job.company, 'company', companyContainer);
     if (job.new) {
         createSpanTag('company__new', 'new!', companyContainer);
     }
@@ -41,14 +44,14 @@ function createItem(job) {
         createSpanTag('company__featured', 'featured', companyContainer);
     }
 
-    createPTag(job.position, infoContainer);
+    createPTag(job.position, 'position', infoContainer);
 
     var detailsContainer = createDivTag('', 'info__details', infoContainer);
-    createPTag(job.postedAt, detailsContainer);
-    createPTag('•', detailsContainer);
-    createPTag(job.contract, detailsContainer);
-    createPTag('•', detailsContainer);
-    createPTag(job.location, detailsContainer);
+    createPTag(job.postedAt, '', detailsContainer);
+    createPTag('•', '', detailsContainer);
+    createPTag(job.contract, '', detailsContainer);
+    createPTag('•', '', detailsContainer);
+    createPTag(job.location, '', detailsContainer);
 
     //Tags container
     var tagsContainer = createDivTag('', 'job-container__tags', jobContainer);
@@ -81,11 +84,13 @@ function createDivTag(id, className, parent) {
 /**
  * Creates a <p> element
  * @param {*} content Text inside the element
+ * @param {*} class Class attribute of the element
  * @param {*} parent Parent element to append
  * @returns The element created
  */
-function createPTag(content, parent) {
+function createPTag(content, className, parent) {
     var element = document.createElement('p');
+    element.classList = className;
     element.innerHTML = content;
     parent.appendChild(element);
 
