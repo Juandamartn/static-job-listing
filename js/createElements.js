@@ -42,8 +42,10 @@ async function createSpanTag(className, content, parent, click = 0, filterValue 
     element.classList = className;
     element.innerHTML = content;
 
-    if (click != 0) {
+    if (click == 1) {
         element.setAttribute('onclick', 'openFilter(this.dataset.value)');
+    } else if (click == 2) {
+        element.setAttribute('onclick', 'deleteTag(this)');
     }
 
     if (filterValue != '') {

@@ -87,7 +87,8 @@ main {
     cursor: pointer;
 }
 
-.main__job-container {
+.main__job-container,
+.params__item {
     user-select: none;
 }
 
