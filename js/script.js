@@ -1,5 +1,5 @@
 let jobs;
-var mainContainer = document.querySelector('main');
+var mainContainer = document.querySelector('.container');
 
 fetch("data.json")
     .then((res) => res.json())

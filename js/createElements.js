@@ -1,5 +1,5 @@
 /**
- * Creates a <div> element
+ * Creates a div element
  * @param {*} id Id attribute of the element
  * @param {*} className Class attribute of the element
  * @param {*} parent Parent element to append
@@ -15,7 +15,7 @@ function createDivTag(id, className, parent) {
 }
 
 /**
- * Creates a <p> element
+ * Creates a p element
  * @param {*} content Text inside the element
  * @param {*} class Class attribute of the element
  * @param {*} parent Parent element to append
@@ -31,7 +31,7 @@ function createPTag(content, className, parent) {
 }
 
 /**
- * Creates a <span> element
+ * Creates a span element
  * @param {*} className Class attribute of the element
  * @param {*} content Text inside the element
  * @param {*} parent Parent element to append
@@ -56,7 +56,7 @@ async function createSpanTag(className, content, parent, click = 0, filterValue 
 }
 
 /**
- * Creates a <img> element
+ * Creates a img element
  * @param {*} src The src value of the element
  * @param {*} alt The alt value of the element
  * @param {*} parent The parent element to append
