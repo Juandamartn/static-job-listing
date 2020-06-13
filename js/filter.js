@@ -7,8 +7,6 @@ function openFilter(filterParam) {
         filterContainer.classList.toggle('show');
     }
 
-    let jobsFiltered = [];
-
     createSpanTag('params__item', filterParam, paramContainer, 0, filterParam);
 
     filterJobs(jobs)
@@ -19,7 +17,7 @@ function openFilter(filterParam) {
                 createItem(result[i]);
             }
         })
-        .catch((err) => console.log('Error: ' + err));
+    // .catch((err) => console.log('Error: ' + err));
 }
 
 /**
@@ -111,7 +109,7 @@ async function filterJobs(job) {
 
                 case 'React':
                     for (let y = 0; y < jobsFiltered[x].tools.length; y++) {
-                        if (jobsFiltered[x].languages[y] != 'React') {
+                        if (jobsFiltered[x].tools[y] != 'React') {
                             jobsFiltered.splice(x, 1);
                         }
                     }
@@ -119,7 +117,7 @@ async function filterJobs(job) {
 
                 case 'Sass':
                     for (let y = 0; y < jobsFiltered[x].tools.length; y++) {
-                        if (jobsFiltered[x].languages[y] != 'Sass') {
+                        if (jobsFiltered[x].tools[y] != 'Sass') {
                             jobsFiltered.splice(x, 1);
                         }
                     }
@@ -127,7 +125,7 @@ async function filterJobs(job) {
 
                 case 'Vue':
                     for (let y = 0; y < jobsFiltered[x].tools.length; y++) {
-                        if (jobsFiltered[x].languages[y] != 'Vue') {
+                        if (jobsFiltered[x].tools[y] != 'Vue') {
                             jobsFiltered.splice(x, 1);
                         }
                     }
@@ -135,7 +133,7 @@ async function filterJobs(job) {
 
                 case 'Django':
                     for (let y = 0; y < jobsFiltered[x].tools.length; y++) {
-                        if (jobsFiltered[x].languages[y] != 'Django') {
+                        if (jobsFiltered[x].tools[y] != 'Django') {
                             jobsFiltered.splice(x, 1);
                         }
                     }
@@ -143,17 +141,16 @@ async function filterJobs(job) {
 
                 case 'RoR':
                     for (let y = 0; y < jobsFiltered[x].tools.length; y++) {
-                        if (jobsFiltered[x].languages[y] != 'RoR') {
+                        if (jobsFiltered[x].tools[y] != 'RoR') {
                             jobsFiltered.splice(x, 1);
                         }
                     }
                     break;
-
-                default:
-                    break;
             }
         }
     }
+
+
 
     return jobsFiltered;
 }
@@ -170,4 +167,10 @@ function closeFilter() {
     }, 500);
 
     paramContainer.innerHTML = "";
+    mainContainer.innerHTML = "";
+
+    fetch("data.json")
+        .then((res) => res.json())
+        .then((data) => initialize(data))
+        .catch((err) => console.log('Error: ' + err));
 }
