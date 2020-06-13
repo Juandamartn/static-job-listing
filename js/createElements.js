@@ -37,7 +37,7 @@ function createPTag(content, className, parent) {
  * @param {*} parent Parent element to append
  * @returns The element created
  */
-async function createSpanTag(className, content, parent, click = 0, filterValue = '') {
+function createSpanTag(className, content, parent, click = 0, filterValue = '') {
     var element = document.createElement('span');
     element.classList = className;
     element.innerHTML = content;
