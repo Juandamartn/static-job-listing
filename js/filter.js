@@ -5,7 +5,7 @@ var paramContainer = document.querySelector('.filter-container__params'),
  * Open the filter container if it's not displayed and show the tags selected
  * @param {*} filterParam The name value of the tag
  */
-function openFilter(filterParam) {
+function openFilter(filterParam, filterType) {
     // Show the filter container
     if (filterContainer.classList.contains('hidden')) {
         filterContainer.classList.toggle('hidden');
@@ -16,7 +16,7 @@ function openFilter(filterParam) {
 
     // Prevents the selection of a tag that already exists
     if (paramContainer.childNodes.length == 0) {
-        createSpanTag('params__item', filterParam, paramContainer, 2, filterParam);
+        createSpanTag('params__item', filterParam, paramContainer, 2, filterParam, filterType);
     } else {
         for (let i = 0; i < paramContainer.childNodes.length; i++) {
             if (paramContainer.children[i].dataset.value == filterParam)
@@ -24,18 +24,10 @@ function openFilter(filterParam) {
         }
 
         if (!tagExists)
-            createSpanTag('params__item', filterParam, paramContainer, 2, filterParam);
+            createSpanTag('params__item', filterParam, paramContainer, 2, filterParam, filterType);
     }
 
-    filterJobs(jobs)
-        .then(function (result) {
-            mainContainer.innerHTML = '';
-
-            for (let i = 0; i < result.length; i++) {
-                createItem(result[i]);
-            }
-        })
-        .catch((err) => console.error('Error: ' + err));
+    filterJobs(jobs);
 }
 
 /**
@@ -43,16 +35,25 @@ function openFilter(filterParam) {
  * @param {*} job The Jobs array
  * @return The list of jobs filtered
  */
-async function filterJobs(job) {
-    let jobsFiltered = jobs;
+function filterJobs(job) {
+    for (let i = 0; i < mainContainer.childNodes.length; i++) {
+        let filtersSelected = 0;//Variable to count the number of tags selected in the filter container
 
-    for (let i = 0; i < paramContainer.childNodes.length; i++) {
-        console.log(i + 1);
+        if (paramContainer.childNodes == 0) {
+            mainContainer.children[i].classList.remove('hidden');
+        }
 
-        
+        for (let y = 0; y < paramContainer.childNodes.length; y++) {
+            if ((mainContainer.children[i].dataset[paramContainer.children[y].dataset.type].includes(paramContainer.children[y].dataset.value)))
+                filtersSelected++
+        }
+
+        if (filtersSelected == paramContainer.childNodes.length) {
+            mainContainer.children[i].classList.remove('hidden');
+        } else {
+            mainContainer.children[i].classList.add('hidden');
+        }
     }
-
-    return jobsFiltered;
 }
 
 /**
@@ -89,5 +90,6 @@ function deleteTag(tag) {
     });
 
     promise.then(paramContainer.childNodes.length == 0 ? closeFilter() : false)
+        .then(filterJobs(jobs))
         .catch((error) => console.log(error));
 }

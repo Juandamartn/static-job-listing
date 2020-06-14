@@ -37,19 +37,23 @@ function createPTag(content, className, parent) {
  * @param {*} parent Parent element to append
  * @returns The element created
  */
-function createSpanTag(className, content, parent, click = 0, filterValue = '') {
+function createSpanTag(className, content, parent, click = 0, filterValue = '', filterType = '') {
     var element = document.createElement('span');
     element.classList = className;
     element.innerHTML = content;
 
     if (click == 1) {
-        element.setAttribute('onclick', 'openFilter(this.dataset.value)');
+        element.setAttribute('onclick', 'openFilter(this.dataset.value, this.dataset.type)');
     } else if (click == 2) {
         element.setAttribute('onclick', 'deleteTag(this)');
     }
 
     if (filterValue != '') {
         element.dataset.value = filterValue;
+    }
+
+    if (filterType != '') {
+        element.dataset.type = filterType;
     }
 
     parent.appendChild(element);

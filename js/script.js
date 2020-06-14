@@ -23,7 +23,15 @@ function initialize(data) {
  * @param {*} job The specific item in the array
  */
 function createItem(job) {
+    // Variables to store the collection of languages and tools for each job
+    let languages = [];
+    let tools = [];
+
     var jobContainer = createDivTag(job.id, 'main__job-container', mainContainer);
+
+    // Data values for each job
+    jobContainer.dataset.role = job.role;
+    jobContainer.dataset.level = job.level;
 
     // Image and Info wrapper
     var wrapper = createDivTag('', 'job-container__wrapper', jobContainer);
@@ -55,12 +63,26 @@ function createItem(job) {
 
     //Tags container
     var tagsContainer = createDivTag('', 'job-container__tags', jobContainer);
-    createSpanTag('tags__item', job.role, tagsContainer, 1, job.role);
-    createSpanTag('tags__item', job.level, tagsContainer, 1, job.level);
+    createSpanTag('tags__item', job.role, tagsContainer, 1, job.role, 'role');
+    createSpanTag('tags__item', job.level, tagsContainer, 1, job.level, 'level');
     for (let i = 0; i < job.languages.length; i++) {
-        createSpanTag('tags__item', job.languages[i], tagsContainer, 1, job.languages[i]);
+        createSpanTag('tags__item', job.languages[i], tagsContainer, 1, job.languages[i], 'languages');
+
+        // Data values for languages
+        languages.push(job.languages[i]);
+        jobContainer.dataset.languages = languages.join();
     }
-    for (let i = 0; i < job.tools.length; i++) {
-        createSpanTag('tags__item', job.tools[i], tagsContainer, 1, job.tools[i]);
+
+    if (job.tools.length != 0) {
+        for (let i = 0; i < job.tools.length; i++) {
+            createSpanTag('tags__item', job.tools[i], tagsContainer, 1, job.tools[i], 'tools');
+
+            // Data values for tools
+            tools.push(job.tools[i]);
+
+            jobContainer.dataset.tools = tools.join();
+        }
+    } else {
+        jobContainer.dataset.tools = 'empty';
     }
 }
