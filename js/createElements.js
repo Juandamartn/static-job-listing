@@ -7,7 +7,10 @@
  */
 function createDivTag(id, className, parent) {
     var container = document.createElement('div');
-    container.setAttribute('id', id);
+
+    if (id != '')
+        container.setAttribute('id', id);
+
     container.classList = className;
     parent.appendChild(container);
 
